@@ -10,7 +10,13 @@ git clone https://github.com/andrelopes-code/dundie-next-app
 secrets_file="dundie-api/.secrets.toml"
 API_ROUTE_FILE="dundie-next-app/src/constants/apiRoute.ts"
 DEFAULT_TOML_FILE="dundie-api/dundie/default.toml"
-API_URL="http://localhost/api"
+
+if [ -n "$GITPOD_WORKSPACE_ID" ]; then
+    API_URL="https://80-${GITPOD_WORKSPACE_ID}.ws-us110.gitpod.io/api"
+else
+    API_URL="http://localhost/api"
+fi
+
 BASE_API_URL="http://api:8000"
 SECRET_KEY=$(openssl rand -hex 32)
 
@@ -20,7 +26,6 @@ if [ ! -f $secrets_file ]; then
     echo "dynaconf_merge = true" >> $secrets_file
     echo "" >> $secrets_file
     echo "[development.security]" >> $secrets_file
-    echo "# openssl rand -hex 32" >> $secrets_file
     echo "ADMIN_PASS = \"admin\"" >> $secrets_file
     echo "DELIVERY_PASS = \"delivery\"" >> $secrets_file
     echo "SECRET_KEY = \"$SECRET_KEY\"" >> $secrets_file
