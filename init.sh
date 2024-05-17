@@ -49,6 +49,6 @@ docker compose exec api dundie initialize
 
 clear
 echo -e "\033[1;35m    ____  ____  _   ________\n   / __ \/ __ \/ | / / ____/\n  / / / / / / /  |/ / __/   \n / /_/ / /_/ / /|  / /___   \n/_____/\____/_/ |_/_____/   \n                           "
-echo -e "\033[1;35mAcesse: http://localhost"
+echo -e "\033[1;35mAcesse: $(echo $API_URL | sed 's/\/api$//')"
 echo "Login: admin"
 echo "Password: admin"
