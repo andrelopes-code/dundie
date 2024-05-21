@@ -12,7 +12,7 @@ API_ROUTE_FILE="dundie-next-app/src/constants/apiRoute.ts"
 DEFAULT_TOML_FILE="dundie-api/dundie/default.toml"
 
 if [ -n "$GITPOD_WORKSPACE_ID" ]; then
-    API_URL="https://80-${GITPOD_WORKSPACE_ID}.ws-us110.gitpod.io/api"
+    API_URL="https://80-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}/api"
 else
     API_URL="http://localhost/api"
 fi
